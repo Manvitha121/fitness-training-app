@@ -1,0 +1,502 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --panel: rgba(255, 255, 255, 0.8);
+  --panel-solid: #ffffff;
+  --text: #1a2238;
+  --muted: #6c7892;
+  --border: rgba(24, 39, 75, 0.08);
+  --blue: #4c7ef3;
+  --green: #3fcf8e;
+  --orange: #ff9f43;
+  --purple: #7c6af0;
+  --shadow: 0 18px 40px rgba(31, 48, 85, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #eef5ff, var(--bg));
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.topbar h1 {
+  margin: 6px 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ghost-button,
+.primary-button,
+.tab,
+.workout-meta button {
+  border: none;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.ghost-button {
+  background: rgba(76, 126, 243, 0.08);
+  color: var(--blue);
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--blue), #5d87ff);
+  color: white;
+  padding: 14px 18px;
+  width: 100%;
+  font-weight: 700;
+  margin-top: 18px;
+  box-shadow: var(--shadow);
+}
+
+.tab-bar {
+  display: flex;
+  gap: 12px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 18px;
+  width: fit-content;
+  margin-bottom: 22px;
+}
+
+.tab {
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 18px;
+  font-weight: 700;
+}
+
+.tab.active {
+  background: white;
+  color: var(--text);
+  box-shadow: 0 8px 18px rgba(31, 48, 85, 0.08);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+.narrow-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.panel {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+  padding: 22px;
+}
+
+.hero-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(76,126,243,0.12), rgba(124,106,240,0.08));
+}
+
+.hero-panel h2 {
+  margin: 8px 0 0;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+}
+
+.hero-summary {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.summary-pill {
+  background: white;
+  padding: 12px 14px;
+  border-radius: 16px;
+  min-width: 130px;
+  border: 1px solid var(--border);
+}
+
+.summary-pill span,
+.summary-pill strong {
+  display: block;
+}
+
+.summary-pill span {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.summary-pill.accent {
+  background: rgba(124,106,240,0.08);
+}
+
+.stats-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.stat-topline {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.ring-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0 12px;
+}
+
+.progress-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.progress-ring .ring-inner {
+  background: white;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.progress-ring .ring-inner strong {
+  font-size: 1rem;
+}
+
+.progress-ring.blue { --blue: #4c7ef3; }
+.progress-ring.green { --green: #3fcf8e; }
+.progress-ring.orange { --orange: #ff9f43; }
+.progress-ring.purple { --purple: #7c6af0; }
+
+.small-progress {
+  margin-top: auto;
+}
+
+.small-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.06);
+  overflow: hidden;
+}
+
+.small-progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel-header span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.input-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.split-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input, select {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text);
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  height: 180px;
+  padding-top: 18px;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  gap: 10px;
+}
+
+.bar-column {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(to top, rgba(76,126,243,0.08), rgba(76,126,243,0));
+  border-radius: 12px 12px 0 0;
+  padding: 8px;
+}
+
+.bar-fill {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(180deg, #8aaeff, var(--blue));
+  min-height: 14px;
+}
+
+.bar-group span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.workout-list,
+.history-list {
+  display: grid;
+  gap: 12px;
+}
+
+.workout-item,
+.history-item {
+  background: rgba(245,248,255,0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.workout-item strong,
+.history-date {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.workout-item p,
+.empty-state {
+  margin: 0;
+  color: var(--muted);
+}
+
+.workout-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.workout-meta span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.workout-meta button {
+  background: rgba(255, 95, 95, 0.08);
+  color: #e45454;
+  padding: 7px 10px;
+  font-weight: 700;
+}
+
+.history-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.terms-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  padding: 20px;
+}
+
+.terms-modal {
+  width: min(620px, 100%);
+  background: white;
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.logo-badge {
+  display: inline-flex;
+  background: rgba(76,126,243,0.08);
+  color: var(--blue);
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.terms-modal h2 {
+  margin: 0 0 18px;
+  font-size: 2rem;
+}
+
+.terms-content {
+  color: var(--muted);
+  line-height: 1.7;
+  display: grid;
+  gap: 12px;
+}
+
+.agree-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.terms-panel .terms-content {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .stats-grid,
+  .content-grid,
+  .narrow-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 20px 14px 42px;
+  }
+
+  .stats-grid,
+  .content-grid,
+  .narrow-grid,
+  .two-col,
+  .split-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 10px 12px;
+  }
+
+  .topbar,
+  .hero-panel,
+  .panel-header,
+  .workout-item,
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-summary {
+    width: 100%;
+  }
+
+  .summary-pill {
+    flex: 1;
+  }
+}
